@@ -3,17 +3,17 @@
 # Recipe:: default
 #
 
-package "dev-java/sun-jdk" do
-  action :install
+remote_file "/tmp/jruby-bin-1.6.0.tar.gz" do
+ source "http://jruby.org.s3.amazonaws.com/downloads/1.6.0/jruby-bin-1.6.0.tar.gz"
+ mode "0644"
 end
 
-package "dev-java/jruby-bin" do
-  action :install
+execute "tar" do
+ user "deploy"
+ command "sudo tar -C /usr/lib -xvf /tmp/jruby-bin-1.6.0.tar.gz"
+ action :run
 end
 
-execute "install-glassfish" do
-  command "/usr/bin/jruby -S gem install glassfish"
-end
 
 #####
 #
@@ -21,7 +21,7 @@ end
 #
 #####
 
-APP_DIRECTORY = '/data/hello_world/current'
+APP_DIRECTORY = '/data/insurance_claims/current'
 
 #####
 #

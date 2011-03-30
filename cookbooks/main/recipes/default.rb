@@ -3,7 +3,7 @@
 #    echo "i ran at #{Time.now}" >> /root/cheftime
 #  }
 #end
-
+require_recipe 'jruby'
 # uncomment if you want to run postgres recipe
 #require_recipe 'postgres'
 
